@@ -1,48 +1,49 @@
+// Variables Initialization
 const codeElements = document.querySelectorAll('#code');
 const pinBtns = document.querySelectorAll('#pin-btn');
 const btnClear = document.getElementById('btn-clear');
 const btnEnter = document.getElementById('btn-enter');
 const pinInput = document.getElementById('pinInput');
-const code = "1234"; // Replace with your desired pin code
-
 const imageContainer = document.getElementById("imageContainer");
-
+const balanceElement = document.getElementById("balance");
 let enteredCode = ""; // Variable to store the entered code
 
+// Gives every button with id = "pin-btn" responsiveness and adds that value to the input element
 pinBtns.forEach(button => {
   button.addEventListener("click", () => {
-    if (pinInput.value.length < 2) { // Limit the input to 4 digits
+    if (pinInput.value.length < 2) { // Limit the input to 2 digits
       pinInput.value += button.textContent;
-      enteredCode = pinInput.value; // Update the entered code variable
     }
   });
 });
 
+// Clears any input from input element
 btnClear.addEventListener("click", (e) => {
   e.preventDefault(); // Prevent default form submission behavior
   pinInput.value = "";
-  enteredCode = ""; // Clear the entered code variable
 });
 
+/* Event where if the enter button is clicked, it stores the input value in the enteredCode variable and
+verifies if a match exist or not */
 btnEnter.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const enteredCode = pinInput.value;
-  const parsedCode = parseInt(enteredCode);
+  enteredCode = parseInt(pinInput.value);
   let isMatchFound = false;
 
   codeElements.forEach((codeElement) => {
     const codeValue = parseInt(codeElement.textContent);
 
-    if (parsedCode === codeValue) {
+    if (enteredCode === codeValue) {
       isMatchFound = true;
 
       let productName = "";
       let productImage = "";
       let productPrice = "";
+      let balance = parseFloat(balanceElement.textContent.slice(1)); // Extract the numerical value from the balance text
 
       if (codeValue === 40) {
-        productName = "Dorito";
+        productName = "Doritos";
         productImage = `./images/dorito.webp`;
         productPrice = "$1.00";
 
@@ -102,16 +103,12 @@ btnEnter.addEventListener("click", (e) => {
         productPrice = "$1.00";
       }
 
+      // Shows Modal with message and product image
       document.getElementById("modalMessage").textContent = `You just got ${productName} from the vending machine!`;
       document.getElementById("productImage").src = productImage;
 
 
-
-      // Update the balance by subtracting a dollar
-      const balanceElement = document.getElementById("balance");
-      let balance = parseFloat(balanceElement.textContent.slice(1)); // Extract the numerical value from the balance text
-      console.log(balance)
-
+      // Conditional statement that substract balance if balance is greater or equal to 1, otherwise a "not enough balance" message appears
       if (balance >= 1) {
         const image = document.createElement("img");
         image.src = productImage;
@@ -119,25 +116,24 @@ btnEnter.addEventListener("click", (e) => {
         imageContainer.appendChild(image);
         balance -= 1; // Subtract a dollar
         balanceElement.textContent = "$" + balance.toFixed(2); // Update the balance text
-
-      }
-      else {
+      } else {
         document.getElementById("modalMessage").textContent = "Sorry, not enough balance.";
-        document.getElementById("productImage").src = "./images/sad.jfif"; // Clear the product image
+        document.getElementById("productImage").src = "./images/sad.jfif";
         $('#productModal').modal('show');
       }
 
       $('#productModal').modal('show');
       pinInput.value = "";
 
-
       return;
     }
   });
 
+  // Conditional where if the input code is not available in the vending machine, a message will prompt
   if (!isMatchFound) {
-    document.getElementById("modalMessage").textContent = "Sorry, I don't understand that input.";
-    document.getElementById("productImage").src = "./images/sad.jfif"; // Clear the product image
+    document.getElementById("modalMessage").textContent = "Sorry, I don't recognize that input.";
+    document.getElementById("productImage").src = "./images/sad.jfif";
     $('#productModal').modal('show');
+    pinInput.value = "";
   }
 });
