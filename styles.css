@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Sofia");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Tangerine:wght@700&display=swap');
 
 :root {
   --white: #fff;
@@ -11,86 +12,214 @@
   --dark-grey: #222831;
 }
 
-body{
+body {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 14px;
-  background-image: url("https://static.vecteezy.com/system/resources/previews/003/301/388/original/vending-machine-with-food-drink-bottle-with-man-and-woman-people-free-vector.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("https://cdnb.artstation.com/p/assets/images/images/043/371/939/large/dominika-kozarska-trainstation-dominikakozarska-baselightandshadow-2.jpg?1637084370");
   background-position: center;
-  overflow: hidden;
+  background-repeat: no-repeat;
 }
 
-/* VENDING MACHINE */
-.container {
-  width:620px;
-  margin-bottom: 80px;
+
+
+.vending-machine {
+  background-color: #5b191d;
+  justify-content: center;
+  align-items: center;
+  max-width: 410px;
+  width: 100%;
+  padding: 20px 20px 50px 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.card {
-  border: 8px solid #539491;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.vending-machine > h3 {
+  font-family: 'Tangerine', cursive!important;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: #ff7390;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: solid 2px #f60178;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #feef94;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product-container {
+  display: flex;
+  justify-content: center;
+  background-color: #393f47;
+  flex: 1 0 60%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+
+.vending-machine ul {
+  display: flex;
+  list-style: none;
+}
+
+.products {
+  width: 80px;
+  height: 80px;
+
+}
+
+.products-water {
+  width: 60px;
+  height: 80px;
+
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-info {
+  display: flex;
+  background-color: rgb(0, 0, 0);
+  justify-content: space-around;
+  margin-bottom: 10px;
+  padding: 5px 0;
+}
+
+.code {
+  color: white;
+}
+
+.price {
+  color: black;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.pin-container {
+  margin-left: 10px;
+  margin-top: 10px;
+  max-height: 200px;
+}
+
+.pin-pad {
   padding: 20px;
-  background-color: #6fcac5;
+  background-color: rgb(54, 52, 52);
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  grid-gap: 10px;
+  border-radius: 20px;
 }
 
-/* PIN PAD */
-.enter, .clear{
-  font-size: 12px;
-  position: relative;
-  right: 10px;
-  width: 55px;
+.pin-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
+.pin-enter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #0a5c22;
+  border: 1px solid #0a5c22;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+}
 
-/* IMAGE INSIDE THE MODAL */
+.pin-clear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #880c0c;
+  border: 1px solid #880c0c;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.wallet{
+  margin-top: 10px;
+  background-color: #feef94;
+  border-radius: 10px;
+  border: solid 2px black;
+}
+.wallet p {
+
+  font-size: 24px;
+  text-align: center;
+  color: rgb(37, 24, 24);
+}
+
+.label {
+  grid-column: 1 / span 3;
+  font-size: 14px;
+  background-color: #eee;
+}
+
+.balance {
+margin-top: 20px;
+
+}
+
+.balance h3 {
+  display: flex;
+  justify-content: center;
+  background-color: #ff7390;
+
+  border: solid 2px #f60178;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #feef94;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    1px 1px 0 black;
+
+}
+
 #imageContainer {
+  background-color: #ff7390;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 #imageContainer img {
-  max-width: 80px;
-  max-height: 75px;
+  width: 40px;
+  height: 40px;
+
 }
-
-
-/* This box class is purely used for explaining how the bootstrap grid system works. */
-/* .box {
-  background-color: lightblue;
-  border: 1px solid blue;
-  min-height: 50px;
-  font-size: 2rem;
-}
-
-@media (min-width: 576px) {
-  body::before {
-    content: "SM";
-  }
-}
-
-@media (min-width: 768px) {
-  body::before {
-    content: "MD";
-  }
-}
-
-@media (min-width: 992px) {
-  body::before {
-    content: "LG";
-  }
-}
-
-@media (min-width: 1200px) {
-  body::before {
-    content: "XL";
-  }
-}
-
-@media (min-width: 1400px) {
-  body::before {
-    content: "XXL";
-  }
-} */

@@ -1,17 +1,20 @@
 // Variables Initialization
-const codeElements = document.querySelectorAll('#code');
-const pinBtns = document.querySelectorAll('#pin-btn');
-const btnClear = document.getElementById('btn-clear');
-const btnEnter = document.getElementById('btn-enter');
-const pinInput = document.getElementById('pinInput');
+const codeElements = document.querySelectorAll(".code");
+const pinBtns = document.querySelectorAll("#pin-btn");
+const btnClear = document.getElementById("btn-clear");
+const btnEnter = document.getElementById("btn-enter");
+const pinInput = document.getElementById("pinInput");
 const imageContainer = document.getElementById("imageContainer");
+const currentContent = imageContainer.textContent;
 const balanceElement = document.getElementById("balance");
+const existingH3 = imageContainer.querySelector("h3");
 let enteredCode = ""; // Variable to store the entered code
 
 // Gives every button with id = "pin-btn" responsiveness and adds that value to the input element
-pinBtns.forEach(button => {
+pinBtns.forEach((button) => {
   button.addEventListener("click", () => {
-    if (pinInput.value.length < 2) { // Limit the input to 2 digits
+    if (pinInput.value.length < 2) {
+      // Limit the input to 2 digits
       pinInput.value += button.textContent;
     }
   });
@@ -43,86 +46,87 @@ btnEnter.addEventListener("click", (e) => {
       let balance = parseFloat(balanceElement.textContent.slice(1)); // Extract the numerical value from the balance text
 
       if (codeValue === 40) {
-        productName = "Doritos";
-        productImage = `./images/dorito.webp`;
-        productPrice = "$1.00";
-
+        productName = "Sundae";
+        productImage = `./images/icecream.png`;
+        productPrice = 2.0;
       } else if (codeValue === 41) {
-        productName = "Lays";
-        productImage = `./images/lays.png`;
-        productPrice = "$1.00";
-
+        productName = "Cupcake";
+        productImage = `./images/cupcake.png`;
+        productPrice = 2.0;
       } else if (codeValue === 42) {
-        productName = "Cheetos";
-        productImage = `./images/cheetos.png`;
-        productPrice = "$1.00";
-
+        productName = "Cake";
+        productImage = `./images/cake.png`;
+        productPrice = 2.0;
       } else if (codeValue === 43) {
-        productName = "Ruffles";
-        productImage = `./images/ruffles.png`;
-        productPrice = "$1.00";
-
+        productName = "Burger";
+        productImage = `./images/burger.png`;
+        productPrice = 3.0;
       } else if (codeValue === 44) {
-        productName = "Poppycock";
-        productImage = `./images/poppycock.png`;
-        productPrice = "$1.00";
-
+        productName = "Pizza";
+        productImage = `./images/pizza.png`;
+        productPrice = 2.5;
       } else if (codeValue === 45) {
-        productName = "Pretzel";
-        productImage = `./images/pretzel.png`;
-        productPrice = "$1.00";
-
-      } else if (codeValue === 46) {
-        productName = "Jolly Rancher";
-        productImage = `./images/jolly.png`;
-        productPrice = "$1.00";
-
-      } else if (codeValue === 47) {
-        productName = "Grandma Cookies";
-        productImage = `./images/grandma.webp`;
-        productPrice = "$1.00";
-
+        productName = "Taco";
+        productImage = `./images/taco.png`;
+        productPrice = 1.5;
+      } else if (codeValue === 10) {
+        productName = "Chips";
+        productImage = `./images/chips.png`;
+        productPrice = 1.0;
       } else if (codeValue === 11) {
-        productName = "Oreos";
-        productImage = `./images/oreo.jpg`;
-        productPrice = "$1.00";
-
+        productName = "Donut";
+        productImage = `./images/donut.png`;
+        productPrice = 1.0;
       } else if (codeValue === 12) {
-        productName = "KitKat";
-        productImage = `./images/kitkat.png`;
-        productPrice = "$1.00";
-
+        productName = "Chocolate";
+        productImage = `./images/chocolate.png`;
+        productPrice = 1.0;
       } else if (codeValue === 13) {
-        productName = "Hershey's Chocolate";
-        productImage = `./images/hersheys.png`;
-        productPrice = "$1.00";
-
+        productName = "Milkshake";
+        productImage = `./images/shake.png`;
+        productPrice = 3.0;
       } else if (codeValue === 14) {
-        productName = "M&M's";
-        productImage = `./images/mms.webp`;
-        productPrice = "$1.00";
+        productName = "Water";
+        productImage = `./images/water.png`;
+        productPrice = 1.0;
+      } else if (codeValue === 15) {
+        productName = "Water";
+        productImage = `./images/water.png`;
+        productPrice = 1.0;
       }
 
-      // Shows Modal with message and product image
-      document.getElementById("modalMessage").textContent = `You just got ${productName} from the vending machine!`;
-      document.getElementById("productImage").src = productImage;
+      if (balance >= productPrice) {
+        // Sufficient balance to purchase the product
+        document.getElementById(
+          "modalMessage"
+        ).textContent = `You just got ${productName} from the vending machine!`;
+        document.getElementById("productImage").src = productImage;
 
+        const defaultImage = imageContainer.textContent.trim() === "⟱";
 
-      // Conditional statement that substract balance if balance is greater or equal to 1, otherwise a "not enough balance" message appears
-      if (balance >= 1) {
+        if (defaultImage) {
+          // If the default image is found, remove it
+          imageContainer.textContent = "";
+          imageContainer.style.backgroundColor = "black";
+        }
+
+        // Create a new image element
         const image = document.createElement("img");
         image.src = productImage;
 
+        // Append the new image to the imageContainer
         imageContainer.appendChild(image);
-        balance -= 1; // Subtract a dollar
+        balance -= productPrice; // Subtract the product price from the balance
         balanceElement.textContent = "$" + balance.toFixed(2); // Update the balance text
       } else {
-        document.getElementById("modalMessage").textContent = "Sorry, not enough balance.";
+        // Not enough balance to purchase the product
+        document.getElementById("modalMessage").textContent =
+          "Sorry, not enough balance.";
         document.getElementById("productImage").src = "./images/sad.jfif";
-        $('#productModal').modal('show');
+        $("#productModal").modal("show");
       }
 
-      $('#productModal').modal('show');
+      $("#productModal").modal("show");
       pinInput.value = "";
 
       return;
@@ -131,9 +135,10 @@ btnEnter.addEventListener("click", (e) => {
 
   // Conditional where if the input code is not available in the vending machine, a message will prompt
   if (!isMatchFound) {
-    document.getElementById("modalMessage").textContent = "Sorry, I don't recognize that input.";
+    document.getElementById("modalMessage").textContent =
+      "Sorry, I don't recognize that input.";
     document.getElementById("productImage").src = "./images/sad.jfif";
-    $('#productModal').modal('show');
+    $("#productModal").modal("show");
     pinInput.value = "";
   }
 });
