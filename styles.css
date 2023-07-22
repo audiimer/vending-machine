@@ -18,25 +18,32 @@ body {
   background-image: url("https://cdnb.artstation.com/p/assets/images/images/043/371/939/large/dominika-kozarska-trainstation-dominikakozarska-baselightandshadow-2.jpg?1637084370");
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 
 
 .vending-machine {
   background-color: #5b191d;
-  justify-content: center;
-  align-items: center;
   max-width: 410px;
   width: 100%;
   padding: 20px 20px 50px 20px;
-  margin: 0 auto;
-  margin-top: 50px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.vending-machine > h3 {
-  font-family: 'Tangerine', cursive!important;
+.vending-machine>h3 {
+  font-family: 'Tangerine', cursive !important;
   font-size: 50px;
   display: flex;
   justify-content: center;
@@ -169,12 +176,13 @@ body {
   color: #fff;
 }
 
-.wallet{
+.wallet {
   margin-top: 10px;
   background-color: #feef94;
   border-radius: 10px;
   border: solid 2px black;
 }
+
 .wallet p {
 
   font-size: 24px;
@@ -189,7 +197,7 @@ body {
 }
 
 .balance {
-margin-top: 20px;
+  margin-top: 20px;
 
 }
 
