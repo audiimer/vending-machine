@@ -217,6 +217,9 @@ body {
 
 /* Mobile screens */
 @media screen and (max-width: 600px) {
+  .vending-machine{
+    height: 100vh;
+  }
   .content-wrapper {
     flex-direction: column;
   }
@@ -224,8 +227,7 @@ body {
 
   .container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: space-around;
   }
 
   .pin-container {
@@ -234,6 +236,7 @@ body {
 
   .wallet {
     padding: 10px;
+    height: 120px;
   }
 
 }
