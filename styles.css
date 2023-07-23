@@ -61,15 +61,12 @@ body {
 
 .content-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .product-container {
-  background-color: #393f47;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  width: 100%;
+  flex: 1;
+  background-color: #333232;
 }
 
 .vending-machine ul {
@@ -112,9 +109,7 @@ body {
 }
 
 .pin-container {
-  margin-left: 10px;
   margin-top: 10px;
-  max-height: 200px;
 }
 
 .pin-pad {
@@ -222,34 +217,23 @@ body {
 
 /* Mobile screens */
 @media screen and (max-width: 600px) {
-  .product-container {
-    width: 100%;
-  }
-
   .content-wrapper {
     flex-direction: column;
+  }
+
+
+  .container {
+    display: flex;
     justify-content: space-between;
+    align-items: flex-start;
   }
 
-  .vending-machine {
-    height: 100vh;
-  }
-
-  .wallet,
   .pin-container {
-    flex-basis: 100%;
+    margin-right: 20px;
   }
 
   .wallet {
     padding: 10px;
-    height: 110px;
-    position: fixed;
-    bottom: 150px;
-    right: 30px;
-  }
-
-  .pin-container {
-    display: flex;
   }
 
 }
